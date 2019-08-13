@@ -53,6 +53,11 @@ public class CreateConta {
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
 		return ResponseEntity.created(uri).body(obj);
 	}
+	@PutMapping(value = "/deposito")
+	public void putDeposito(@RequestBody Conta conta){
+		contaService.updateSaldo(conta.getConta(), conta.getAgencia(), conta.getDigito());
+	}
+	
 	@PutMapping(value="/{id}")
 	public ResponseEntity<Conta> update(@PathVariable("id") long id,
 	                                      @RequestBody Conta conta) {
