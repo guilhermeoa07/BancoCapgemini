@@ -17,41 +17,54 @@ public class Conta {
 	private Long id;
 	
 	@NotBlank(message = "Campo Obrigatorio")
-	private int conta;
+	private String conta;
 	
 	@NotBlank(message = "Campo Obrigatorio")
-	private int digito;
+	private String digito;
 	
 	@NotBlank(message = "Campo Obrigatorio")
-	private int agencia;
+	private String agencia;
 	
 	@NotBlank(message = "Campo Obrigatorio")
-	private int digitoAgencia;
+	private String digitoAgencia;
 	
 	private double saldo;
 	
 	@NotBlank(message = "Campo Obrigatorio")
-	private int cpfBeneficiario;
+	private String cpfBeneficiario;
+	
+	@NotBlank(message = "Campo Obrigatorio")
+	private String senha;
 
 	
 	public Conta () {	
 	}
 	
-	public Conta (Long id, int conta, int digito, int agencia, int digitoAgencia, int cpfBeneficiario, double saldo) {
+	public Conta (Long id, String conta, String senha, String digito, String agencia, String digitoAgencia, String cpfBeneficiario, double saldo) {
 		this.id = id;
 		this.conta = conta;
+		this.senha = senha;
 		this.digito = digito;
 		this.digitoAgencia = digitoAgencia;
 		this.agencia = agencia;
 		this.cpfBeneficiario = cpfBeneficiario;
+		
 		this.saldo = saldo;
 	}
 
-	public int getDigitoAgencia() {
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+
+	public String getDigitoAgencia() {
 		return digitoAgencia;
 	}
 
-	public void setDigitoAgencia(int digitoAgencia) {
+	public void setDigitoAgencia(String digitoAgencia) {
 		this.digitoAgencia = digitoAgencia;
 	}
 
@@ -63,27 +76,27 @@ public class Conta {
 		this.id = id;
 	}
 
-	public int getConta() {
+	public String getConta() {
 		return conta;
 	}
 
-	public void setConta(int conta) {
+	public void setConta(String conta) {
 		this.conta = conta;
 	}
 
-	public int getDigito() {
+	public String getDigito() {
 		return digito;
 	}
 
-	public void setDigito(int digito) {
+	public void setDigito(String digito) {
 		this.digito = digito;
 	}
 
-	public int getAgencia() {
+	public String getAgencia() {
 		return agencia;
 	}
 
-	public void setAgencia(int agencia) {
+	public void setAgencia(String agencia) {
 		this.agencia = agencia;
 	}
 
@@ -95,11 +108,11 @@ public class Conta {
 		this.saldo = saldo;
 	}
 
-	public int getCpfBeneficiario() {
+	public String getCpfBeneficiario() {
 		return cpfBeneficiario;
 	}
 
-	public void setCpfBeneficiario(int cpfBeneficiario) {
+	public void setCpfBeneficiario(String  cpfBeneficiario) {
 		this.cpfBeneficiario = cpfBeneficiario;
 	}
 
