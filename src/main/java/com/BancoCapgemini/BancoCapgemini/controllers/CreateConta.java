@@ -1,6 +1,7 @@
 package com.BancoCapgemini.BancoCapgemini.controllers;
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import javax.validation.Valid;
 
@@ -42,9 +43,17 @@ public class CreateConta {
 	}
 	
 	@GetMapping(value = "/saldo")
-	public Conta findSaldo(@RequestParam("conta") String conta,@RequestParam("agencia") String agencia, 
-			@RequestParam("digito") String digito){
-		return contaService.findSaldo(conta, agencia, digito);
+	public Optional<Conta> findSaldo(@RequestParam("conta") String contaA,@RequestParam("agencia") String agencia, 
+			@RequestParam("digito") String digito,
+			@RequestBody Conta conta){
+		return contaService.findSaldo(contaA, agencia, digito)
+		           .map(record -> {
+		               record.setAgencia(conta.getAgencia());
+		               record.setDigitoAgencia(conta.getDigitoAgencia());
+		               record.setConta(conta.getConta());
+		               record.setDigito(conta.getDigito());
+		               record.setSaldo(conta.getSaldo());
+		           }
 	}
 	
 	@PostMapping

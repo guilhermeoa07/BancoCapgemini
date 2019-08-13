@@ -32,7 +32,7 @@ public class ContaService {
 	public void deleteAll() {
 		contaRepository.deleteAll();
 	}
-	public Conta findSaldo(String conta, String agencia, String digito){
+	public Optional<Conta> findSaldo(String conta, String agencia, String digito){
 		return contaRepository.findByContaAndAgenciaAndDigito(conta, agencia, digito);
 	}
 	
