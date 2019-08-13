@@ -43,17 +43,9 @@ public class CreateConta {
 	}
 	
 	@GetMapping(value = "/saldo")
-	public Optional<Conta> findSaldo(@RequestParam("conta") String contaA,@RequestParam("agencia") String agencia, 
-			@RequestParam("digito") String digito,
-			@RequestBody Conta conta){
-		return contaService.findSaldo(contaA, agencia, digito)
-		           .map(record -> {
-		               record.setAgencia(conta.getAgencia());
-		               record.setDigitoAgencia(conta.getDigitoAgencia());
-		               record.setConta(conta.getConta());
-		               record.setDigito(conta.getDigito());
-		               record.setSaldo(conta.getSaldo());
-		           }
+	public Optional<Object> findSaldo(@RequestParam("conta") String contaBancaria,@RequestParam("agencia") String agencia, 
+			@RequestParam("digito") String digito){
+		return contaService.findSaldo(contaBancaria, agencia, digito);
 	}
 	
 	@PostMapping
@@ -64,7 +56,7 @@ public class CreateConta {
 	}
 	@PutMapping(value = "/deposito")
 	public void putDeposito(@RequestBody Conta conta){
-		contaService.updateSaldo(conta.getConta(), conta.getAgencia(), conta.getDigito());
+		contaService.deposito(conta.getConta(), conta.getAgencia(), conta.getDigito(), conta.getSaldo());
 	}
 	
 	@PutMapping(value="/{id}")
