@@ -28,7 +28,7 @@ public class Conta {
 	@NotBlank(message = "Campo Obrigatorio")
 	private String digitoAgencia;
 	
-	private double saldo;
+	private Double saldo;
 	
 	@NotBlank(message = "Campo Obrigatorio")
 	private String cpfBeneficiario;
@@ -40,7 +40,8 @@ public class Conta {
 	public Conta () {	
 	}
 	
-	public Conta (Long id, String conta, String senha, String digito, String agencia, String digitoAgencia, String cpfBeneficiario, double saldo) {
+	public Conta (Long id, String conta, String senha, String digito, String agencia, String digitoAgencia,
+			String cpfBeneficiario, Double saldo) {
 		this.id = id;
 		this.conta = conta;
 		this.senha = senha;
@@ -100,11 +101,11 @@ public class Conta {
 		this.agencia = agencia;
 	}
 
-	public double getSaldo() {
+	public Double getSaldo() {
 		return saldo;
 	}
 
-	public void setSaldo(double saldo) {
+	public void setSaldo(Double saldo) {
 		this.saldo = saldo;
 	}
 
