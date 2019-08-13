@@ -2,6 +2,7 @@ package com.BancoCapgemini.BancoCapgemini.controllers;
 import java.net.URI;
 import java.util.List;
 
+import javax.persistence.EntityManager;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +14,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.BancoCapgemini.BancoCapgemini.models.Conta;
 import com.BancoCapgemini.BancoCapgemini.services.ContaService;
+
 
 @RestController
 @RequestMapping("/contas")
@@ -40,8 +43,9 @@ public class CreateConta {
 	}
 	
 	@GetMapping(value = "/saldo")
-	public ResponseEntity<Conta> findAll(@PathVariable Long id){
-		return contaService.findAll()
+	public Conta findSaldo(@RequestParam("conta") String conta,@RequestParam("agencia") String agencia, 
+			@RequestParam("digito") String digito){
+		return contaService.findSaldo(conta, agencia, digito);
 	}
 	
 	@PostMapping
