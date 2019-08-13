@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
+import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -28,7 +29,7 @@ public class Conta {
 	@NotBlank(message = "Campo Obrigatorio")
 	private String digitoAgencia;
 	
-	private Double saldo;
+	private BigDecimal saldo;
 	
 	@NotBlank(message = "Campo Obrigatorio")
 	private String cpfBeneficiario;
@@ -41,7 +42,7 @@ public class Conta {
 	}
 	
 	public Conta (Long id, String conta, String senha, String digito, String agencia, String digitoAgencia,
-			String cpfBeneficiario, Double saldo) {
+			String cpfBeneficiario, BigDecimal saldo) {
 		this.id = id;
 		this.conta = conta;
 		this.senha = senha;
@@ -49,7 +50,6 @@ public class Conta {
 		this.digitoAgencia = digitoAgencia;
 		this.agencia = agencia;
 		this.cpfBeneficiario = cpfBeneficiario;
-		
 		this.saldo = saldo;
 	}
 
@@ -101,11 +101,11 @@ public class Conta {
 		this.agencia = agencia;
 	}
 
-	public Double getSaldo() {
+	public BigDecimal getSaldo() {
 		return saldo;
 	}
 
-	public void setSaldo(Double saldo) {
+	public void setSaldo(BigDecimal saldo) {
 		this.saldo = saldo;
 	}
 

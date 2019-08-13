@@ -2,7 +2,6 @@ package com.BancoCapgemini.BancoCapgemini.controllers;
 import java.net.URI;
 import java.util.List;
 
-import javax.persistence.EntityManager;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,7 +54,7 @@ public class CreateConta {
 		return ResponseEntity.created(uri).body(obj);
 	}
 	@PutMapping(value="/{id}")
-	public ResponseEntity update(@PathVariable("id") long id,
+	public ResponseEntity<Conta> update(@PathVariable("id") long id,
 	                                      @RequestBody Conta conta) {
 	   return contaService.findByID(id)
 	           .map(record -> {
