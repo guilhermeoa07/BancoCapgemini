@@ -11,4 +11,5 @@ import com.BancoCapgemini.BancoCapgemini.models.Conta;
 public interface ContaRepository extends JpaRepository<Conta, Long> {
 
 	Optional<Conta> findByContaAndAgenciaAndDigito(String conta, String agencia, String digito);
+	Optional<Conta> findByContaAndAgenciaAndDigitoAndSenha(String conta, String agencia, String digito, String senha);
 }

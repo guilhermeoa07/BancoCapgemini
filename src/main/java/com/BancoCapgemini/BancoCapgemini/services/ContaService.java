@@ -7,7 +7,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.BancoCapgemini.BancoCapgemini.models.Conta;
 import com.BancoCapgemini.BancoCapgemini.repositories.ContaRepository;
@@ -49,5 +48,13 @@ public class ContaService {
 			               Conta updated = save(record);
 			               return ResponseEntity.accepted().body(updated);
 			           });
+	}
+	public Optional<Object> saque(String contaBancaria, String agencia, String digito, String senha, BigDecimal valorDeposito) {
+		return contaRepository.findByContaAndAgenciaAndDigitoAndSenha(contaBancaria, agencia, digito, senha)
+		           .map(record -> {
+		               record.setSaldo(record.getSaldo().subtract(valorDeposito));
+		               Conta updated = save(record);
+		               return ResponseEntity.accepted().body(updated);
+		           });
 	}
 }

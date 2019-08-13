@@ -1,4 +1,5 @@
 package com.BancoCapgemini.BancoCapgemini.controllers;
+import java.math.BigDecimal;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -55,8 +56,12 @@ public class CreateConta {
 		return ResponseEntity.created(uri).body(obj);
 	}
 	@PutMapping(value = "/deposito")
-	public void putDeposito(@RequestBody Conta conta){
-		contaService.deposito(conta.getConta(), conta.getAgencia(), conta.getDigito(), conta.getSaldo());
+	public Optional<Object> putDeposito(@RequestParam("valor") BigDecimal valor, @RequestBody Conta conta){
+		return contaService.deposito(conta.getConta(), conta.getAgencia(), conta.getDigito(), valor);
+	}
+	@PutMapping(value = "/saque")
+	public Optional<Object> putSaque(@RequestParam("valor") BigDecimal valor, @RequestBody Conta conta){
+		return contaService.saque(conta.getConta(), conta.getAgencia(), conta.getDigito(), conta.getSenha(), valor);
 	}
 	
 	@PutMapping(value="/{id}")
